@@ -8,6 +8,26 @@ export default function EditContact() {
   const [form, setForm] = useState({ firstName: "", lastName: "", phone: "", email: "" });
   const [error, setError] = useState("");
 
+  const inputStyle = {
+    padding: "10px 12px",
+    borderRadius: 8,
+    border: "1px solid #d1d5db",
+    fontSize: 16,
+    outline: "none"
+  };
+
+  const buttonStyle = {
+    padding: "10px 0",
+    borderRadius: 8,
+    border: "none",
+    background: "#66a6ff",
+    color: "#fff",
+    fontWeight: 600,
+    fontSize: 16,
+    cursor: "pointer",
+    transition: "background 0.2s"
+  };
+
   useEffect(() => {
     api.get(`/contacts`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -36,16 +56,31 @@ export default function EditContact() {
   };
 
   return (
-    <div className="edit-contact-container">
-      <h2>Modifier le contact</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="firstName" placeholder="Prénom" value={form.firstName} onChange={handleChange} required />
-        <input name="lastName" placeholder="Nom" value={form.lastName} onChange={handleChange} required />
-        <input name="phone" placeholder="Téléphone" value={form.phone} onChange={handleChange} required />
-        <input name="email" placeholder="Email" value={form.email} onChange={handleChange} />
-        <button type="submit">Enregistrer</button>
-      </form>
-      {error && <div className="error">{error}</div>}
+    <div style={{
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)"
+    }}>
+      <div style={{
+        background: "#fff",
+        padding: "2rem 2.5rem",
+        borderRadius: "16px",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+        minWidth: 320,
+        maxWidth: 360
+      }}>
+        <h2 style={{ textAlign: "center", marginBottom: 24 }}>Modifier le contact</h2>
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <input name="firstName" placeholder="Prénom" value={form.firstName} onChange={handleChange} required style={inputStyle} />
+          <input name="lastName" placeholder="Nom" value={form.lastName} onChange={handleChange} required style={inputStyle} />
+          <input name="phone" placeholder="Téléphone" value={form.phone} onChange={handleChange} required style={inputStyle} />
+          <input name="email" placeholder="Email" value={form.email} onChange={handleChange} style={inputStyle} />
+          <button type="submit" style={buttonStyle}>Enregistrer</button>
+        </form>
+        {error && <div style={{ color: "#e53e3e", marginTop: 12, textAlign: "center" }}>{error}</div>}
+      </div>
     </div>
   );
 }
