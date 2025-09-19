@@ -1,6 +1,10 @@
 # SITE
 https://mycontacts-aymenkerrouche.netlify.app/contacts
 
+# Auth 
+aymenkerrouche00@gmail.com
+123456
+
 # BACKEND
 https://mycontacts-sb39.onrender.com/api-docs/
 
