@@ -13,10 +13,10 @@ https://mycontacts-sb39.onrender.com/api-docs/
 
 # Photos
 
-![app](login.png)
+![app](loginPage.png)
 
 ![app](registre.png)
 
-![app](addContact.png)
+![app](contact.png)
 
 ![app](swagger.png)
