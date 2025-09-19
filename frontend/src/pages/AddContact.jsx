@@ -57,8 +57,9 @@ export default function AddContact() {
         padding: "2rem 2.5rem",
         borderRadius: "16px",
         boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-        minWidth: 320,
-        maxWidth: 360
+        width: "100%",
+        maxWidth: 400,
+        boxSizing: "border-box"
       }}>
         <h2 style={{ textAlign: "center", marginBottom: 24 }}>Ajouter un contact</h2>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>

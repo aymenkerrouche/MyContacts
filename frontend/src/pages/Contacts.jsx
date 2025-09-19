@@ -58,12 +58,13 @@ export default function Contacts() {
       padding: "20px"
     }}>
       <div style={{
-        maxWidth: 600,
+        maxWidth: 1000,
         margin: "0 auto",
         background: "#fff",
         borderRadius: 16,
         boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-        padding: "2rem"
+        padding: "2rem",
+        width: "100%"
       }}>
         <div style={{
           display: "flex",
@@ -101,7 +102,10 @@ export default function Contacts() {
           display: "flex", 
           gap: 10, 
           marginBottom: 18,
-          flexDirection: window.innerWidth < 480 ? "column" : "row"
+          flexDirection: "column",
+          "@media (min-width: 640px)": {
+            flexDirection: "row"
+          }
         }}>
           <input
             placeholder="Recherche..."
@@ -110,7 +114,7 @@ export default function Contacts() {
             style={inputStyle}
           />
           <input
-            placeholder="Filtrer par indicatif (ex: 06)"
+            placeholder="Filtrer"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             style={inputStyle}
@@ -136,11 +140,14 @@ export default function Contacts() {
               <div style={{ 
                 display: "flex", 
                 gap: 8,
-                flexDirection: window.innerWidth < 480 ? "column" : "row"
+                flexDirection: "column",
+                "@media (min-width: 640px)": {
+                  flexDirection: "row"
+                }
               }}>
                 <button 
                   onClick={() => window.location.href = `/contacts/edit/${c._id}`} 
-                  style={{...buttonStyle, flex: window.innerWidth < 480 ? "1" : "none"}}
+                  style={{...buttonStyle, flex: "1"}}
                 >
                   Modifier
                 </button>
@@ -149,7 +156,7 @@ export default function Contacts() {
                   style={{
                     ...buttonStyle, 
                     background: "#e53e3e",
-                    flex: window.innerWidth < 480 ? "1" : "none"
+                    flex: "1"
                   }}
                 >
                   Supprimer
@@ -170,7 +177,8 @@ const inputStyle = {
   fontSize: 16,
   outline: "none",
   flex: 1,
-  minWidth: "200px"
+  minWidth: "150px",
+  width: "100%"
 };
 
 const buttonStyle = {
