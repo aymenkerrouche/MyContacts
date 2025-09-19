@@ -10,8 +10,13 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors({ origin: process.env.CORS_ORIGIN, methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type'] }));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(morgan("dev"));
 
 // Routes
