@@ -47,6 +47,7 @@ export default function AddContact() {
   return (
     <div style={{
       minHeight: "100vh",
+      width: "100vw",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

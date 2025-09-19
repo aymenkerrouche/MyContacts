@@ -30,6 +30,7 @@ export default function Login() {
   return (
     <div className="auth-container" style={{
       minHeight: "100vh",
+      width: "100vw",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

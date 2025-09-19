@@ -4,7 +4,6 @@ import api from "../services/api";
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
   const [error, setError] = useState("");
 
   const fetchContacts = async () => {
@@ -46,14 +45,15 @@ export default function Contacts() {
       c.lastName.toLowerCase().includes(term) ||
       c.phone.includes(term)
     );
-  }).filter((c) => {
-    if (!filter) return true;
-    return c.phone.startsWith(filter);
   });
 
   return (
     <div style={{
       minHeight: "100vh",
+      width: "100vw",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       background: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)",
       padding: "20px"
     }}>
@@ -74,7 +74,7 @@ export default function Contacts() {
           flexWrap: "wrap",
           gap: "10px"
         }}>
-          <h2 style={{ margin: 0 }}>Mes contacts</h2>
+          <h2 style={{ margin: 0, color: "#333" }}>Mes contacts</h2>
           <button onClick={handleLogout} style={{
             ...buttonStyle,
             background: "#ef4444",
@@ -113,12 +113,6 @@ export default function Contacts() {
             onChange={(e) => setSearch(e.target.value)}
             style={inputStyle}
           />
-          <input
-            placeholder="Filtrer"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            style={inputStyle}
-          />
         </div>
 
         {error && <div style={{ color: "#e53e3e", marginBottom: 12, textAlign: "center" }}>{error}</div>}
@@ -132,7 +126,7 @@ export default function Contacts() {
               background: "#f3f4f6",
               boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
             }}>
-              <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 8 }}>
+              <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 8, color: "#333" }}>
                 {c.firstName} {c.lastName}
               </div>
               <div style={{ color: "#555", marginBottom: 4 }}>📞 {c.phone}</div>
