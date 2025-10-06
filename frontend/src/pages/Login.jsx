@@ -34,7 +34,7 @@ export default function Login() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)"
+      background: "linear-gradient(120deg, #DBDBDBFF 0%, #66a6ff 100%)",
     }}>
       <div style={{
         background: "#fff",
@@ -45,7 +45,7 @@ export default function Login() {
         maxWidth: 400,
         boxSizing: "border-box"
       }}>
-        <h2 style={{ textAlign: "center", marginBottom: 24 }}>{isSignup ? "Inscription" : "Connexion"}</h2>
+        <h2 style={{ textAlign: "center", marginBottom: 24, color: "#000000" }}>{isSignup ? "Inscription" : "Connexion"}</h2>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {isSignup && (
             <>
@@ -57,7 +57,7 @@ export default function Login() {
           <input name="password" type="password" placeholder="Mot de passe" value={form.password} onChange={handleChange} required style={inputStyle} />
           <button type="submit" style={buttonStyle}>{isSignup ? "S'inscrire" : "Se connecter"}</button>
         </form>
-        <button onClick={() => setIsSignup(!isSignup)} style={{ ...buttonStyle, background: "#e0e7ff", color: "#333", marginTop: 10 }}>
+        <button onClick={() => setIsSignup(!isSignup)} style={{ ...buttonStyle, background: "#e0e7ff", color: "#333", marginTop: 10, width: "100%" }}>
           {isSignup ? "Déjà inscrit ? Se connecter" : "Créer un compte"}
         </button>
         {error && <div style={{ color: "#e53e3e", marginTop: 12, textAlign: "center" }}>{error}</div>}
@@ -69,9 +69,11 @@ export default function Login() {
 const inputStyle = {
   padding: "10px 12px",
   borderRadius: 8,
-  border: "1px solid #d1d5db",
+  border: "1px solid #f3f4f6",
   fontSize: 16,
-  outline: "none"
+  outline: "none",
+  color: "#000000",
+  backgroundColor: "#f3f4f6",
 };
 
 const buttonStyle = {

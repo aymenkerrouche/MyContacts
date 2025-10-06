@@ -11,9 +11,11 @@ export default function EditContact() {
   const inputStyle = {
     padding: "10px 12px",
     borderRadius: 8,
-    border: "1px solid #d1d5db",
+    border: "1px solid #f3f4f6",
     fontSize: 16,
-    outline: "none"
+    outline: "none",
+    color: "#000000",
+    backgroundColor: "#f3f4f6",
   };
 
   const buttonStyle = {
@@ -62,7 +64,7 @@ export default function EditContact() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)"
+      background: "linear-gradient(120deg, #DBDBDBFF 0%, #66a6ff 100%)",
     }}>
       <div style={{
         background: "#fff",
@@ -73,7 +75,7 @@ export default function EditContact() {
         maxWidth: 400,
         boxSizing: "border-box"
       }}>
-        <h2 style={{ textAlign: "center", marginBottom: 24 }}>Modifier le contact</h2>
+        <h2 style={{ textAlign: "center", marginBottom: 24, color: "#333" }}>Modifier le contact</h2>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <input name="firstName" placeholder="Prénom" value={form.firstName} onChange={handleChange} required style={inputStyle} />
           <input name="lastName" placeholder="Nom" value={form.lastName} onChange={handleChange} required style={inputStyle} />

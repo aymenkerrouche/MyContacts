@@ -54,7 +54,7 @@ export default function Contacts() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)",
+      background: "linear-gradient(120deg, #DBDBDBFF 0%, #66a6ff 100%)",
       padding: "20px"
     }}>
       <div style={{
@@ -167,12 +167,14 @@ export default function Contacts() {
 const inputStyle = {
   padding: "10px 12px",
   borderRadius: 8,
-  border: "1px solid #d1d5db",
+  border: "1px solid #f3f4f6",
   fontSize: 16,
   outline: "none",
   flex: 1,
   minWidth: "150px",
-  width: "100%"
+  //width: "100%",
+  backgroundColor: "#f3f4f6",
+  color: "#000000",
 };
 
 const buttonStyle = {

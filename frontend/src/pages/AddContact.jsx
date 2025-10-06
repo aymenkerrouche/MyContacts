@@ -8,11 +8,13 @@ export default function AddContact() {
   const [error, setError] = useState("");
 
   const inputStyle = {
-    padding: "10px 12px",
-    borderRadius: 8,
-    border: "1px solid #d1d5db",
-    fontSize: 16,
-    outline: "none"
+   padding: "10px 12px",
+  borderRadius: 8,
+  border: "1px solid #f3f4f6",
+  fontSize: 16,
+  outline: "none",
+  color: "#000000",
+  backgroundColor: "#f3f4f6",
   };
 
   const buttonStyle = {
@@ -51,7 +53,7 @@ export default function AddContact() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)"
+      background: "linear-gradient(120deg, #DBDBDBFF 0%, #66a6ff 100%)",
     }}>
       <div style={{
         background: "#fff",
@@ -62,7 +64,7 @@ export default function AddContact() {
         maxWidth: 400,
         boxSizing: "border-box"
       }}>
-        <h2 style={{ textAlign: "center", marginBottom: 24 }}>Ajouter un contact</h2>
+        <h2 style={{ textAlign: "center", marginBottom: 24, color: "#333" }}>Ajouter un contact</h2>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <input name="firstName" placeholder="Prénom" value={form.firstName} onChange={handleChange} required style={inputStyle} />
           <input name="lastName" placeholder="Nom" value={form.lastName} onChange={handleChange} required style={inputStyle} />
@@ -71,7 +73,7 @@ export default function AddContact() {
           <div style={{ display: "flex", gap: 10 }}>
             <button type="button" onClick={() => navigate("/contacts")} style={{
               ...buttonStyle,
-              background: "#6b7280",
+              background: "#ef4444",
               flex: 1
             }}>
               Annuler
