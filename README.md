@@ -5,10 +5,7 @@ https://mycontacts-aymenkerrouche.netlify.app/contacts
 aymenkerrouche00@gmail.com
 123456
 
-# BACKEND
-https://mycontacts-sb39.onrender.com/api-docs/
-
-# SWAGGER
+# API
 https://mycontacts-sb39.onrender.com/api-docs/
 
 # Photos
