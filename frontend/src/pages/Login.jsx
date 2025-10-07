@@ -3,7 +3,7 @@ import api from "../services/api";
 
 export default function Login() {
   const [isSignup, setIsSignup] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "", firstName: "", lastName: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -47,12 +47,6 @@ export default function Login() {
       }}>
         <h2 style={{ textAlign: "center", marginBottom: 24, color: "#000000" }}>{isSignup ? "Inscription" : "Connexion"}</h2>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {isSignup && (
-            <>
-              <input name="firstName" placeholder="Prénom" value={form.firstName} onChange={handleChange} required style={inputStyle} />
-              <input name="lastName" placeholder="Nom" value={form.lastName} onChange={handleChange} required style={inputStyle} />
-            </>
-          )}
           <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required style={inputStyle} />
           <input name="password" type="password" placeholder="Mot de passe" value={form.password} onChange={handleChange} required style={inputStyle} />
           <button type="submit" style={buttonStyle}>{isSignup ? "S'inscrire" : "Se connecter"}</button>
