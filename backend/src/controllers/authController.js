@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
 
-    res.json({ token, user: { id: newUser._id, email: newUser.email } });
+    //res.json({ token, user: { id: newUser._id, email: newUser.email } });
 
     res.status(201).json({ message: "Utilisateur créé avec succès", 
       token, user: { id: newUser._id, email: newUser.email }
