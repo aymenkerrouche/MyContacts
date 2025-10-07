@@ -15,8 +15,10 @@ export default function Login() {
     setError("");
     try {
       if (isSignup) {
-        await api.post("/auth/register", form);
-        setIsSignup(false);
+        const res = await api.post("/auth/register", { email: form.email, password: form.password });
+        //setIsSignup(false);
+        localStorage.setItem("token", res.data.token);
+        window.location.href = "/contacts";
       } else {
         const res = await api.post("/auth/login", { email: form.email, password: form.password });
         localStorage.setItem("token", res.data.token);
