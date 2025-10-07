@@ -27,7 +27,7 @@ export default function Contacts() {
   }, []);
 
     const handleDelete = async (id) => {
-      if (!window.confirm("Supprimer ce contact ?")) return;
+      if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce contact ?")) return;
       try {
         await api.delete(`/contacts/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -58,13 +58,13 @@ export default function Contacts() {
       padding: "20px"
     }}>
       <div style={{
-        maxWidth: 1000,
+        maxWidth: 900,
         margin: "0 auto",
         background: "#fff",
         borderRadius: 16,
         boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
         padding: "2rem",
-        width: "100%"
+        width: "80%"
       }}>
         <div style={{
           display: "flex",
@@ -124,37 +124,54 @@ export default function Contacts() {
               padding: "16px",
               borderRadius: 10,
               background: "#f3f4f6",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
+              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "12px"
             }}>
-              <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 8, color: "#333" }}>
-                {c.firstName} {c.lastName}
-              </div>
-              <div style={{ color: "#555", marginBottom: 4 }}>📞 {c.phone}</div>
-              <div style={{ color: "#555", marginBottom: 12 }}>✉️ {c.email}</div>
-              <div style={{ 
-                display: "flex", 
-                gap: 8,
-                flexDirection: "column",
-                "@media (min-width: 640px)": {
-                  flexDirection: "row"
-                }
+              <div style={{
+                width: 50,
+                height: 50,
+                borderRadius: "50%",
+                background: `hsl(${c.firstName.charCodeAt(0) * 137.508 % 360}, 70%, 60%)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: 18,
+                flexShrink: 0
               }}>
-                <button 
-                  onClick={() => window.location.href = `/contacts/edit/${c._id}`} 
-                  style={{...buttonStyle, flex: "1"}}
-                >
-                  Modifier
-                </button>
-                <button 
-                  onClick={() => handleDelete(c._id)} 
-                  style={{
-                    ...buttonStyle, 
-                    background: "#e53e3e",
-                    flex: "1"
-                  }}
-                >
-                  Supprimer
-                </button>
+                {c.firstName.charAt(0).toUpperCase()}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 8, color: "#333" }}>
+                  {c.firstName} {c.lastName}
+                </div>
+                <div style={{ color: "#555", marginBottom: 4 }}>📞 {c.phone}</div>
+                <div style={{ color: "#555", marginBottom: 12 }}>✉️ {c.email}</div>
+                <div style={{ 
+                  display: "flex", 
+                  gap: 8,
+                  flexDirection: "row"
+                }}>
+                  <button 
+                    onClick={() => window.location.href = `/contacts/edit/${c._id}`} 
+                    style={{...buttonStyle, flex: "1"}}
+                  >
+                    Modifier
+                  </button>
+                  <button 
+                    onClick={() => handleDelete(c._id)} 
+                    style={{
+                      ...buttonStyle, 
+                      background: "#e53e3e",
+                      flex: "1"
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                </div>
               </div>
             </li>
           ))}
