@@ -15,7 +15,7 @@ This document summarizes the infrastructure and CI/CD pipelines used for the MyC
 - Frontend deploy script: [frontend/deploy.sh](frontend/deploy.sh)
 - Frontend Jenkinsfile: [frontend/Jenkinsfile](frontend/Jenkinsfile)
 - Backend Jenkinsfile: [backend/Jenkinsfile](backend/Jenkinsfile)
-- Frontend tests: [frontend/src/__tests__](frontend/src/__tests__)
+- Frontend tests: [frontend/src/__tests__](https://github.com/aymenkerrouche/MyContacts/tree/main/frontend/src/__tests__)
 - Backend tests: [backend/tests](backend/tests)
 
 **Infrastructure (VM)**
