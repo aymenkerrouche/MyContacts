@@ -12,11 +12,11 @@ This document summarizes the infrastructure and CI/CD pipelines used for the MyC
 - Backend (production): https://mycontacts-sb39.onrender.com
 
 **Files of interest**
-- Frontend deploy script: [frontend/deploy.sh](frontend/deploy.sh)
-- Frontend Jenkinsfile: [frontend/Jenkinsfile](frontend/Jenkinsfile)
+- Frontend deploy script: https://github.com/aymenkerrouche/MyContacts/blob/main/frontend/deploy.sh
+- Frontend Jenkinsfile: https://github.com/aymenkerrouche/MyContacts/blob/main/frontend/Jenkinsfile
 - Backend Jenkinsfile: [backend/Jenkinsfile](backend/Jenkinsfile)
-- Frontend tests: [frontend/src/__tests__](https://github.com/aymenkerrouche/MyContacts/tree/main/frontend/src/__tests__)
-- Backend tests: [backend/tests](backend/tests)
+- Frontend tests: https://github.com/aymenkerrouche/MyContacts/tree/main/frontend/src/__tests__
+- Backend tests: https://github.com/aymenkerrouche/MyContacts/tree/main/backend/tests
 
 **Infrastructure (VM)**
 - **OS**: Ubuntu (examples used Ubuntu 24.04)
