@@ -7,6 +7,10 @@ This document summarizes the infrastructure and CI/CD pipelines used for the MyC
 - **Backend**: Node/Express app using `mongoose` connecting to MongoDB (production DB outside scope).
 - **CI/CD**: Jenkins pipelines (frontend and backend) provided via `frontend/Jenkinsfile` and `backend/Jenkinsfile`.
 
+**Deployed instances**
+- Frontend (production): https://mycontacts-aymenkerrouche.netlify.app/
+- Backend (production): https://mycontacts-sb39.onrender.com
+
 **Files of interest**
 - Frontend deploy script: [frontend/deploy.sh](frontend/deploy.sh)
 - Frontend Jenkinsfile: [frontend/Jenkinsfile](frontend/Jenkinsfile)
