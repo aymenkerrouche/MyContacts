@@ -47,6 +47,18 @@ pipeline {
         archiveArtifacts artifacts: 'test-results.xml', fingerprint: true
       }
     }
+    stage('Deploy') {
+      when {
+        expression { return env.DEPLOY_HOST != null && env.DEPLOY_HOST != '' }
+      }
+      steps {
+        sh 'apt-get update && apt-get install -y rsync openssh-client'
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-key', keyFileVariable: 'DEPLOY_KEY')]) {
+          sh 'chmod 600 "$DEPLOY_KEY"'
+          sh "./deploy-backend.sh -h ${env.DEPLOY_HOST} -u ${env.DEPLOY_USER ?: 'aymen'} -p ${env.DEPLOY_PATH ?: '/var/www/mycontacts-backend'} -i $DEPLOY_KEY"
+        }
+      }
+    }
   }
 
   post {
