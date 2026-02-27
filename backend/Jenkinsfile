@@ -1,0 +1,63 @@
+pipeline {
+  agent {
+    docker {
+      image 'node:18'
+      args  '--user root:root'
+    }
+  }
+
+  environment {
+    CI = 'true'
+    JEST_JUNIT_OUTPUT = 'test-results.xml'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Install') {
+      steps {
+        sh 'npm ci'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        // Run jest with jest-junit reporter to generate JUnit XML
+        sh 'npm test -- --reporters=default --reporters=jest-junit'
+      }
+      post {
+        always {
+          junit allowEmptyResults: true, testResults: 'test-results.xml'
+        }
+      }
+    }
+
+    stage('Package') {
+      steps {
+        sh 'echo "No packaging steps for backend"'
+      }
+    }
+
+    stage('Archive') {
+      steps {
+        archiveArtifacts artifacts: 'test-results.xml', fingerprint: true
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Backend pipeline succeeded.'
+    }
+    failure {
+      echo 'Backend pipeline failed.'
+    }
+    always {
+      sh 'ls -la'
+    }
+  }
+}

@@ -1,0 +1,69 @@
+pipeline {
+  agent {
+    docker {
+      image 'node:18'
+      args  '--user root:root'
+    }
+  }
+
+  environment {
+    CI = 'true'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Install') {
+      steps {
+        sh 'npm ci'
+      }
+    }
+
+    stage('Lint') {
+      steps {
+        sh 'npm run lint'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        // Run tests and produce JUnit-style output for Jenkins
+        sh 'npm test -- --reporter junit > test-results.xml'
+      }
+      post {
+        always {
+          junit allowEmptyResults: true, testResults: 'test-results.xml'
+        }
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+
+    stage('Archive') {
+      steps {
+        archiveArtifacts artifacts: 'dist/**', fingerprint: true
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Frontend pipeline succeeded.'
+    }
+    failure {
+      echo 'Frontend pipeline failed.'
+    }
+    always {
+      echo "Listing workspace contents for debugging:"
+      sh 'ls -la'
+    }
+  }
+}
